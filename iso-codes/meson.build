@@ -22,14 +22,11 @@ xml_from_json = find_program(
 
 # Handle domains of iso-codes
 domains = [
-    'iso_15924',
     'iso_3166-1',
     'iso_3166-2',
     'iso_3166-3',
-    'iso_4217',
     'iso_639-2',
     'iso_639-3',
-    'iso_639-5',
 ]
 
 foreach domain : domains
@@ -38,22 +35,16 @@ endforeach
 
 # Install JSON data and schema files
 json_files = [
-    'data/iso_15924.json',
     'data/iso_3166-1.json',
     'data/iso_3166-2.json',
     'data/iso_3166-3.json',
-    'data/iso_4217.json',
     'data/iso_639-2.json',
     'data/iso_639-3.json',
-    'data/iso_639-5.json',
-    'data/schema-15924.json',
     'data/schema-3166-1.json',
     'data/schema-3166-2.json',
     'data/schema-3166-3.json',
-    'data/schema-4217.json',
     'data/schema-639-2.json',
     'data/schema-639-3.json',
-    'data/schema-639-5.json',
 ]
 
 install_data(
@@ -94,7 +85,6 @@ endforeach
 symlinks = {
     'iso_639.xml': 'iso_639-2.xml',
     'iso_639_3.xml': 'iso_639-3.xml',
-    'iso_639_5.xml': 'iso_639-5.xml',
     'iso_3166_2.xml': 'iso_3166-2.xml',
     'iso_3166.xml': 'iso_3166-1.xml',
 }
