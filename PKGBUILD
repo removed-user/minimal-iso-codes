@@ -1,28 +1,32 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
-pkgname=iso-codes
+pkgname=minimal-iso-codes
 pkgver=4.20.1
 pkgrel=1
 pkgdesc='Lists of the country, language, and currency names'
 url='https://github.com/removed-user/minimal-iso-codes'
 arch=(any)
 license=(LGPL-2.1-only)
-makedepends=(git
-             meson
-             python)
-source=(git+https://github.com/removed-user/minimal-iso-codes)
+
+provides=(minimal-iso-codes iso-codes )
+conflicts=(iso-codes)
+
+makedepends=(
+git
+meson
+python
+)
+
+#source=(git+https://github.com/removed-user/minimal-iso-codes)
 #source=(git+https://github.com/removed-user/minimal-iso-codes#tag=v$pkgver)
-sha256sums=('0cb69b41660cbc703f7c6ec005d3232216b82941ff59122b09383852e1a77e93')
+sha512sums=()
 
 build() {
-  meson build $pkgname \
-    --prefix=/usr
-  meson compile -C build
+meson setup build $pkgname --wipe
+meson compile -C build
 }
 
 package() {
   meson install -C build --destdir="$pkgdir"
 }
-#/usr/share/iso-codes/         iso_3166-2/en.po
-
