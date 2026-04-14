@@ -22,14 +22,15 @@ source=(git+https://github.com/removed-user/minimal-iso-codes)
 #source=(/var/cache/AurBuild/Repos/minimal-iso-codes)
 #source=(git+https://github.com/removed-user/minimal-iso-codes#tag=v$pkgver)
 sha512sums=()
-#prepare(
-#
-#  echo $SRCDEST > t
-#  )
+prepare(){
+shopt -s xpg_echo
+  echo srcdir $srcdir \\n SRCDEST $SRCDEST> t
+meson setup build minimal-iso-codes --wipe
+  }
+
 
 build() {
   echo $SRCDEST > t
-meson setup build $pkgname --wipe
 meson compile -C build
 }
 
